@@ -1,0 +1,53 @@
+RTX3050，安装NVIDIA
+第一阶段：安装 Ubuntu 20.04 (在 Windows 端)
+1. 在 Windows 上验证显卡
+按 Win + R，输入 cmd，回车。
+输入：nvidia-smi
+如果你看到了显卡信息表格，说明 Windows 端满分通过！关掉这个黑窗口，继续下一步。
+2.安装 WSL2 和 Ubuntu 18.04
+	（1）打开 PowerShell (管理员):
+		按下 Win 键。
+		输入 PowerShell。
+		右键点击 “Windows PowerShell”，选择 “以管理员身份运行”。
+	（2）输入安装命令：
+		wsl --install -d Ubuntu-20.04
+	（3）等待与初始化：
+		它会自动下载并安装。安装完成后，通常会自动弹出一个黑色的 Ubuntu 终端窗口。
+		如果没有自动弹出来，请去“开始菜单”搜索 Ubuntu 20.04 并点击打开。
+	（4）设置账户：
+		当屏幕显示 Enter new UNIX username: 时，输入你的用户名（我的: tzh），回车。
+		当显示 Enter new UNIX password: 时，输入密码（注意：输入时屏幕不会有任何反应，盲输即可），回车。
+		再次确认密码。
+
+
+第二阶段：验证显卡直通 (在 Ubuntu 端)
+1.进入绿色的 Ubuntu 命令行界面后，第一件事就是确认它能不能看到你的 RTX 3050。
+在 Ubuntu 终端输入：
+nvidia-smi
+2.预期结果： 你应该能看到和之前在 Windows 里一样的表格，显示 NVIDIA GeForce RTX 3050 Laptop GPU。
+如果看到了表格，说明这一步完美通过。
+
+
+
+第三阶段：安装环境管理工具 (Miniconda)
+1.下载安装脚本：
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+2.运行安装：
+bash Miniconda3-latest-Linux-x86_64.sh
+3.激活配置：
+source ~/.bashrc  // 出现(base)
+
+
+第四阶段：配置国内加速源
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
+conda config --set show_channel_urls yes
+
+
+
+
+
+
+

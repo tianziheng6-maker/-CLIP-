@@ -1,0 +1,10 @@
+1.FAISS : 这是目前世界上最快的向量检索库，用来在你的 5000 张图里瞬间找到最匹配的那张。 (注：对于 5000 张这种小数据量，CPU 版本就快得飞起，不到 1 毫秒就能搜完，没必要装复杂的 GPU 版)
+
+2.Streamlit: 用来写网页界面的，极其简单，不用学 HTML/CSS。
+
+# 确保在环境里
+conda activate clip_env
+# 安装 FAISS (CPU版)
+conda install -c pytorch faiss-cpu -y
+# 安装 Streamlit
+pip install streamlit

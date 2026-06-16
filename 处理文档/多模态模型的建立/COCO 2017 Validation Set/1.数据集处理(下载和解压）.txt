@@ -1,0 +1,67 @@
+数据准备： 下载并清洗 COCO 2017 Validation Set，包含 5000 张图像及对应的 Caption 标注文件。
+
+
+一、数据集的下载
+在 WSL2 终端中直接使用 wget 下载（速度通常很快）：
+1. 下载图片压缩包 (Val2017 Images)
+大小： ~1GB
+内容： 5000 张 .jpg 图片
+
+# 确保在你的毕设目录里
+cd ~/bishe_project
+# 下载
+wget http://images.cocodataset.org/zips/val2017.zip
+// 如果无法下载，从网站上下载，然后拉入bishe_project中，再继续下一步解压
+# 解压
+unzip val2017.zip
+
+
+2. 下载标注文件 (Annotations)
+大小： ~241MB
+内容： 包含图片对应的描述文字（Caption），例如 "A dog is running"。
+
+# 下载
+wget http://images.cocodataset.org/annotations/annotations_trainval2017.zip
+// 如果无法下载，从网站上下载，然后拉入bishe_project中，再继续下一步解压
+# 解压
+unzip annotations_trainval2017.zip
+刚才下载的 annotations_trainval2017.zip 解压后，里面有一个文件叫 captions_val2017.json。这个文件包含了每一张图片的英文描述。
+
+
+下载后的目录结构
+解压完成后，你的 ~/bishe_project 文件夹里应该长这样，这就是标准的 COCO 数据格式：
+bishe_project/
+├── val2017/                  <-- 文件夹，里面有 5000 张图片
+│   ├── 000000000139.jpg
+│   ├── ...
+├── annotations/              <-- 文件夹，里面是 json 文件
+│   ├── captions_val2017.json <-- 【关键】主要用这个
+│   ├── instances_val2017.json
+│   └── ...
+├── val2017.zip               <-- 压缩包（解压完可删除）
+├── annotations_trainval2017.zip
+└── test_local.py             <-- 之前的测试代码
+
+
+二、查看你的“文字库”
+//小脚本查看数据结构
+python inspect_data.py
+
+发现 一对多 的关系：
+一张图片 (例如 000000139.jpg)
+对应 5 句描述 (例如 "A woman standing in a living room", "A room with a tv and a couch" 等)。
+
+
+三、删除压缩包
+1.# 删除图片压缩包
+rm val2017.zip
+# 删除标注压缩包
+rm annotations_trainval2017.zip
+
+2.删除后，可输入ls (list) 观察文件夹还剩下什么
+
+
+
+
+
+

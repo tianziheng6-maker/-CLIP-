@@ -1,0 +1,23 @@
+第一步：打开 Ubuntu 终端
+(1)点击 Windows 屏幕下方的 “开始” 菜单。
+(2)搜索 Ubuntu (或者 Ubuntu 20.04)。
+(3)点击打开它，你会再次看到那个黑色的命令行窗口。
+
+
+第二步：激活你的“工具箱” (Conda 环境)
+这是最容易忘记的一步！因为我们为了兼容 ROS 关闭了自动激活，所以你现在进去是“裸机”状态。
+必须手动挂载你的 CLIP 环境：
+conda activate clip_env
+//输入后，命令行最前面会变成 (clip_env)，说明激活成功了
+
+
+第三步：回到你的代码文件夹
+建立存放代码的文件夹叫 bishe_project，在主目录下
+cd ~/bishe_project
+cd ~/bishe_test_project
+
+
+第四步：重新运行代码
+python test_local.py
+
+开机 -> 打开 Ubuntu -> conda activate clip_env -> cd bishe_project -> 开始干活

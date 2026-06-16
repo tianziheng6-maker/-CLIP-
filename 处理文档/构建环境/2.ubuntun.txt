@@ -1,0 +1,20 @@
+ctrl + ALT + T 终端
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh //下载miniconda
+bash Miniconda3-latest-Linux-x86_64.sh //开始安装
+rm -rf ~/miniconda3 //删除残留文件，第一次安装失败后
+~/miniconda3/bin/conda init bash //手动初始化
+source ~/.bashrc //让配置立即生效
+conda --version //查看版本号
+
+//第一步：防止 Conda 破坏 ROS 环境
+//配置后的工作习惯：
+//打开终端时： 默认是纯净系统环境（适合跑 ROS、TurtleBot）
+//需要跑 CLIP/AI 时：手动输入 conda activate <环境名>
+conda config --set auto_activate_base false //执行完后，关闭终端重新打开，(base) 就会消失，你需要用的时候再输 conda activate 即可。避免和ros冲突
+conda activate //重新打开conda
+
+//第二步：为 CLIP 建立专属环境
+//1.创建环境（命名为 clip_env，指定 Python 3.9）
+conda create -n clip_env python=3.9
+//2.激活环境
+conda activate clip_env
